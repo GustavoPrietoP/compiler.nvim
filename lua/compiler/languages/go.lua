@@ -95,7 +95,7 @@ function M.action(selected_option)
         for entry, executable in pairs(solution_executables) do
           task = { "shell", name = "- Run program → " .. executable,
             cmd = "go run "..entry_point,                                                      -- run
-                  " && echo " .. executable ..                                       -- echo
+                  --" && echo " .. executable ..                                       -- echo
                   " && echo '" .. final_message .. "'"
           }
           table.insert(executables, task) -- store all the executables we've created
