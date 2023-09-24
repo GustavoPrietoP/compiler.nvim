@@ -55,7 +55,7 @@ function M.action(selected_option)
       name = "- Go compiler",
       strategy = { "orchestrator",
         tasks = {{ "shell", name = "- Run program → " .. entry_point,
-          cmd = output ..                                                    -- run
+          cmd = "go run " .. entry_point ..                                                    -- run
                 " && echo " .. output ..                                     -- echo
                 " && echo '" .. final_message .. "'"
         },},},})
@@ -94,8 +94,8 @@ function M.action(selected_option)
       if solution_executables then
         for entry, executable in pairs(solution_executables) do
           task = { "shell", name = "- Run program → " .. executable,
-            cmd = "go run "..entry_point,                                                      -- run
-                  --" && echo " .. executable ..                                       -- echo
+            cmd = executable ..
+                  " && echo " .. executable ..                                       -- echo
                   " && echo '" .. final_message .. "'"
           }
           table.insert(executables, task) -- store all the executables we've created
