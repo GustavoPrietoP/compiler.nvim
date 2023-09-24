@@ -94,7 +94,7 @@ function M.action(selected_option)
       if solution_executables then
         for entry, executable in pairs(solution_executables) do
           task = { "shell", name = "- Run program → " .. executable,
-            cmd = executable ..                                                      -- run
+            cmd = "go run "..entry_point,                                                      -- run
                   " && echo " .. executable ..                                       -- echo
                   " && echo '" .. final_message .. "'"
           }
